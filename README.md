@@ -1,7 +1,15 @@
 ## 一键安装 WireGuard Shadowsocks V2Ray 服务端三合一脚本 [IPV6](https://github.com/hongwenjun/vps_setup/blob/master/ipv6/README.md)
-    bash <(curl -L -s https://git.io/vps.sh)
-    # curl脚本可以使用菜单，方便选择 # wget脚本是静默安装 # 目前 WireGuard 脚本支持 IPV6，稳定有待测试
-    # wget -qO- git.io/vps.sh | bash
+```
+bash <(curl -L -s https://git.io/vps.sh)
+# curl脚本可以使用菜单，方便选择 # wget脚本是静默安装
+# wget -qO- git.io/vps.sh | bash
+
+# vps 管理使用命令 bash wgmtu
+wget https://git.io/wgmtu && bash wgmtu
+
+# Shadowsocks 和 V2Ray 简易配置: 生成和显示二维码
+bash <(curl -L -s https://git.io/v2ray.ss)
+```
 
 - [蘭雅sRGB![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/youtube.png)频道](https://www.youtube.com/channel/UCupRwki_4n87nrwP0GIBUXA/videos) &nbsp;&nbsp;&nbsp;可以观看相关脚本工具的演示视频!
 
@@ -22,19 +30,19 @@
 - 此项目仅限于技术交流和探讨，在您测试完毕后必须在1秒钟内彻底删除项目副本。此项目为bash一键脚本，其中涉及到的任何软件版权和责任归原作者所有。
 - 在中国境内使用、传播、售卖、免费分享等任何翻墙服务，都是违法的。如果你在中国境内使用、测试此项目脚本，或者使用此脚本搭建服务器发生以上违法行为，都有违作者意愿！你必须立刻停止此行为！并删除脚本！
 
+### WireGuard 管理使用命令 bash wgmtu    短网址: https://git.io/wgmtu
+[![点击图片链接视频演示](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/wgmtu.png)](https://youtu.be/iOnAeWRvSQI)
+
 ### [OpenWRT安装WireGuard 配置 Udp2Raw+UdpSpeeder+WireGuard](https://github.com/hongwenjun/vps_setup/blob/master/openwrt-18.06.2/README.md)
 ![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/openwrt-18.06.2/openwrt_udptools.png)
 
 ### V2Ray 和 Shadowsocks 配置显示二维码  短网址: https://git.io/v2ray.ss
 ![](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/v2ray/v2ray.ss.png)
 
-### WireGuard 管理使用命令 bash wgmtu    短网址: https://git.io/wgmtu
-[![点击图片链接视频演示](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/img/wgmtu.png)](https://youtu.be/iOnAeWRvSQI)
-
 ### Shadowsocks 配置使用: 添加命令行到 /etc/rc.local
 ```
-# -p 端口 -k 密码 -m 协议 -s 服务IP
-ss-server -s 0.0.0.0 -p 40000 -k ${PASSWORD} -m aes-256-gcm -t 300 >> /var/log/ss-server.log &
+# -p 端口 -k 密码 -m 协议 -s 服务IP                # IPv6 支持参数 -s ::0
+ss-server -s 0.0.0.0 -p 40000 -k ${PASSWORD} -m aes-256-gcm -t 300 -s ::0 >> /var/log/ss-server.log &
 ```
 
 ### V2ray 显示官方服务端配置
